@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
 import Weather from './components/weatherClient';
+import Movie from './components/MovieClient';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <Weather/>
+        <Movie/>
       </div>
     );
   }
