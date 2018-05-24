@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
 import './index.css';
+import {connect} from 'react-redux';
+import {setWeather} from '../../actions';
 
 const weather = require('openweather-apis');
 
-export default class Weather extends Component {
+const mapStateToProps = state => {
+  return {
+    weather: state.weather,
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setWeather: weather => dispatch(setWeather(weather)),
+  };
+};
+
+class Weather extends Component {
 
   constructor(props){
     super(props);
-    this.state = {
-      weatherInfo: '',
-    }
+
     this.getWeather = this.getWeather.bind(this);
     this.eventHandler = this.eventHandler.bind(this);
   }
@@ -27,7 +39,9 @@ export default class Weather extends Component {
   getWeather(){
     weather.getAllWeather((err, response) => {
       console.log(response);
-      this.setState({weatherInfo: response.weather[0].main});
+      this.props.setWeather(response.weather[0].main);
+      console.log(this.props.weather);
+      //this.setState({weatherInfo: response.weather[0].main});
     });
   }
 
@@ -38,8 +52,11 @@ export default class Weather extends Component {
   render() {
     return (
       <div className="weather-container" onClick={this.eventHandler}>
-        {this.state.weatherInfo}
+        {this.props.weather}
       </div>
     );
   }
 }
+
+const connectedWeather = connect(mapStateToProps, mapDispatchToProps)(Weather);
+export default connectedWeather;
