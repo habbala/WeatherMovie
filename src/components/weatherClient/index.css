@@ -4,3 +4,7 @@
   background-color: #eee;
   border: 1px solid black;
 }
+
+.weather-container :hover{
+  background-color: #fff;
+}
