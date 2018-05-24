@@ -3,8 +3,8 @@
   grid-template-columns: 50% 50%;
   grid-template-rows: 85% 15%;
   background-color: pink;
-  height: 500px;
-  width: 500px;
+  height: auto;
+  width: 50%;
 }
 
 .movieTitle{

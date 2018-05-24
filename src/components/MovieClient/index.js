@@ -2,33 +2,57 @@
 import React, { Component } from 'react';
 import './index.css';
 
-export default class Movie extends Component{
+export default class getMovie extends Component{
 
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state = {
-      movieName: '',
-    }
+      movieTitle: '',
+      moviePoster: '',
+      movieRating: '',
+      movieActors: '',
+    };
   }
 
+
   componentWillMount(){
+
     const imdb = require('imdb-api');
-    const movieInfo = imdb.get('The Toxic Avenger', {apiKey: '2ab7eeb0', timeout: 30000}).then(console.log).catch(console.log);
-    this.setState({movieName: ' bajs'});
+    imdb.get('Frozen', {apiKey: '2ab7eeb0', timeout: 30000})
+    .then(function(response){
+      console.log(response);
+    })
+    .catch(function(error){
+      console.log(error);
+    });
+  }
+
+  componentDidMount(){
+    const imdb = require('imdb-api');
+    imdb.get('Frozen', {apiKey: '2ab7eeb0', timeout: 30000})
+    .then((result)=>{
+
+      this.setState({movieTitle : result.title});
+      this.setState({moviePoster : result.poster});
+      this.setState({movieRating : result.rating});
+      this.setState({movieActors : result.actors});
+      console.log(this.state.movieTitle);
+    })
   }
 
   render(){
     return (
       <div className="movieContainer">
         <div className="movieTitle">
-          {this.state.movieName}
+
+          {this.state.movieTitle}
         </div>
         <div className="moviePoster">
-          fin bild på postern
+          <img src={this.state.moviePoster}/>
         </div>
         <div className="movieInformation">
-          <p>Rated: </p>
-          <p>Description:</p>
+          <p>Rated: {this.state.movieRating}</p>
+          <p>Actors: {this.state.movieActors}</p>
         </div>
       </div>
     );
