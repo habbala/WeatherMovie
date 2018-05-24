@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import './index.css';
 
-export default class Weather extends Component {
-  render() {
+const weather = require('openweather-apis');
 
-    var weather = require('openweather-apis');
+export default class Weather extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      weatherInfo: '',
+    }
+  }
+
+  componentWillMount(){
     weather.setAPPID('5a8b6837143c58aa94dee4d3be632930');
     weather.setLang('en');
     weather.setCity('Stockholm');
@@ -12,9 +20,15 @@ export default class Weather extends Component {
       console.log(JSONObj);
     });
 
+    this.setState({weatherInfo: 'hej'});
+
+  }
+
+  render() {
+
     return (
-      <div>
-        hello
+      <div className="weather-container">
+        {this.state.weatherInfo}
       </div>
     );
   }
