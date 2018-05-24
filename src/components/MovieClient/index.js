@@ -11,6 +11,9 @@ export default class getMovie extends Component{
       moviePoster: '',
       movieRating: '',
       movieActors: '',
+      movieDirector: '',
+      movieGenre: '',
+      movieDescription: '',
     };
   }
 
@@ -35,7 +38,10 @@ export default class getMovie extends Component{
       this.setState({movieTitle : result.title});
       this.setState({moviePoster : result.poster});
       this.setState({movieRating : result.rating});
+      this.setState({movieGenre : result.genres});
       this.setState({movieActors : result.actors});
+      this.setState({movieDirector : result.director});
+      this.setState({movieDescription : result.plot});
       console.log(this.state.movieTitle);
     })
   }
@@ -48,11 +54,14 @@ export default class getMovie extends Component{
           {this.state.movieTitle}
         </div>
         <div className="moviePoster">
-          <img src={this.state.moviePoster}/>
+          <img className= "poster" src={this.state.moviePoster}/>
         </div>
         <div className="movieInformation">
           <p>Rated: {this.state.movieRating}</p>
+          <p>Genre: {this.state.movieGenre}</p>
           <p>Actors: {this.state.movieActors}</p>
+          <p>Director: {this.state.movieDirector}</p>
+          <p>Description: {this.state.movieDescription}</p>
         </div>
       </div>
     );

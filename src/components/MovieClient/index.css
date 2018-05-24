@@ -1,15 +1,14 @@
 .movieContainer{
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 40% 60%;
   grid-template-rows: 85% 15%;
   background-color: pink;
   height: auto;
-  width: 50%;
+  width: 70%;
 }
 
 .movieTitle{
   font-size: 30px;
-  background-color: red;
   text-align: center;
   grid-row: 2;
   grid-column: 1 / span 2;
@@ -18,10 +17,20 @@
 .moviePoster{
   height: 70%;
   width: auto;
-  margin-left: 5%;
+  margin: 5%;
   grid-column: 1;
 }
 
 .movieInformation{
-  background-color: blue;
+  margin: 5%;
+}
+
+.poster{
+  width: 100%;
+  height: auto;
+}
+
+.showMore{
+  height: 100px;
+  overflow: hidden;
 }
