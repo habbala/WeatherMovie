@@ -1,4 +1,6 @@
 .weather-container{
-  width: 50px;
-  border: 1px solid #fff;
+  width: 500px;
+  height: 100px;
+  background-color: #eee;
+  border: 1px solid black;
 }
