@@ -1,10 +1,10 @@
 .movieContainer{
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 40% 60%;
   grid-template-rows: 85% 15%;
   background-color: pink;
   height: auto;
-  width: 50%;
+  width: 70%;
 }
 
 .movieTitle{

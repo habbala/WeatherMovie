@@ -46,10 +46,6 @@ export default class getMovie extends Component{
     })
   }
 
-  moreText(){
-    document.getElementByID('showMore').style.overflow = 'visible';
-  }
-
   render(){
     return (
       <div className="movieContainer">
@@ -65,7 +61,7 @@ export default class getMovie extends Component{
           <p>Genre: {this.state.movieGenre}</p>
           <p>Actors: {this.state.movieActors}</p>
           <p>Director: {this.state.movieDirector}</p>
-          <p className="showMore" id="showMore" onClick="moreText">Description: {this.state.movieDescription}</p>
+          <p>Description: {this.state.movieDescription}</p>
         </div>
       </div>
     );
