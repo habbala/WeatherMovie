@@ -56,7 +56,7 @@ class Weather extends Component {
     weather.getAllWeather((err, response) => {
       this.props.setWeather(response.weather[0].main);
       this.setState({icon: response.weather[0].icon});
-      console.log(this.state.icon);
+      console.log("http://openweathermap.org/img/w/" + this.state.icon + ".png");
     });
   }
 
@@ -66,8 +66,13 @@ class Weather extends Component {
   }
 
   render() {
+    const iconStyle = {
+      backgroundImage: 'url(' + 'http://openweathermap.org/img/w/' + this.state.icon + '.png)',
+    }
+
     return (
-      <span className="weather-container" onClick={this.eventHandler}>
+      <span className="weather-container" onClick={this.eventHandler} style={iconStyle}>
+
         <p className="weatherType">{this.props.weather} </p>
         <p>at {this.state.latitude}:{this.state.longitude}</p>
       </span>
