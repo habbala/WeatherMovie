@@ -56,7 +56,12 @@ class Movie extends Component{
 
   eventHandler(event){
     this.getRandomWeatherMovie();
+    this.displayDescritption();
     console.log("CLICK");
+  }
+
+  displayDescritption(){
+    document.getElementById("movieDesc").style.display = "visible";
   }
 
   render(){
@@ -69,11 +74,11 @@ class Movie extends Component{
           <img className= "poster" src={this.props.movie.poster}/>
         </div>
         <div className="movieInformation">
-          <p>Rated: {this.props.movie.rating}</p>
-          <p>Genre: {this.props.movie.genres}</p>
-          <p>Actors: {this.props.movie.actors}</p>
-          <p>Director: {this.props.movie.director}</p>
-          <p>Description: {this.props.movie.plot}</p>
+          <p><b>Rated:</b> {this.props.movie.rating}</p>
+          <p><b>Genre:</b> {this.props.movie.genres}</p>
+          <p><b>Actors:</b> {this.props.movie.actors}</p>
+          <p><b>Director: </b>{this.props.movie.director}</p>
+          <p ID="movieDesc"><b>Description: </b>{this.props.movie.plot}</p>
         </div>
       </span>
     );
