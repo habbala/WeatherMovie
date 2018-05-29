@@ -14,11 +14,11 @@ class App extends Component {
   render() {
     return (
 
-      <div class="container1">
-        <div class="header">
+      <div className="container1">
+        <div className="header">
           <h1>Moodie </h1>
         </div>
-        <div class="container2">
+        <div className="container2">
           <Weather/>
           <Movie/>
         </div>
