@@ -31,7 +31,7 @@ class Weather extends Component {
     weather.setAPPID('5a8b6837143c58aa94dee4d3be632930');
     weather.setLang('en');
     //weather.setCity('Stockholm');
-    weather.setCoordinate(50.0467656, 20.0048731);
+    weather.setCoordinate(51.5033640, -0.1276250);
   }
 
   componentDidMount(){
