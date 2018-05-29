@@ -66,7 +66,8 @@ class Weather extends Component {
   render() {
     return (
       <span className="weather-container" onClick={this.eventHandler}>
-        {this.props.weather} at {this.state.latitude}:{this.state.longitude}
+        <p className="weatherType">{this.props.weather} </p>
+        <p>at {this.state.latitude}:{this.state.longitude} </p>
       </span>
     );
   }
