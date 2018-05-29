@@ -19,19 +19,19 @@
 }
 
 #movieDesc{
-  max-height: 40%;
+  max-height: 50%;
   overflow-y: scroll;
 }
 
 ::-webkit-scrollbar{
-  width: 15px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-thumb{
-  background-color: rgba(244,250,160,1);
+  background-color: #8cd6f9;
 }
 ::-webkit-scrollbar-track{
-  background-color: red;
+  background-color: rgba(244,245,165,1);
 }
 
 .moviePoster{

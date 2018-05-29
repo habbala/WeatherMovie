@@ -5,6 +5,10 @@
   float: right;
 }
 
-.weather-container :hover{
-  background-color: #fff;
+@import url('https://fonts.googleapis.com/css?family=Fascinate+Inline|Faster+One|Knewave');
+.weatherType{
+  font-family: 'Fascinate Inline';
+  text-transform: uppercase;
+  font-size: 50px;
+  text-align: center;
 }
