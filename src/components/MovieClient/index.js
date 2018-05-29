@@ -1,25 +1,26 @@
 //IMDB-API key: 2ab7eeb0
 import React, { Component } from 'react';
 import './index.css';
+import {setMovie} from '../../actions';
+import {connect} from 'react-redux';
 
-export default class getMovie extends Component{
+const mapStateToProps = state => {
+  return {
+    movie: state.movie,
+    weather: state.weather,
+  };
+}
 
-  constructor(){
-    super();
-    this.state = {
-      movieTitle: '',
-      moviePoster: '',
-      movieRating: '',
-      movieActors: '',
-      movieDirector: '',
-      movieGenre: '',
-      movieDescription: '',
-    };
-  }
+const mapDispatchToProps = dispatch => {
+  return {
+    setMovie: movie => dispatch(setMovie(movie)),
+  };
+};
 
+class Movie extends Component{
 
+/*
   componentWillMount(){
-
     const imdb = require('imdb-api');
     imdb.get('Frozen', {apiKey: '2ab7eeb0', timeout: 30000})
     .then(function(response){
@@ -28,22 +29,40 @@ export default class getMovie extends Component{
     .catch(function(error){
       console.log(error);
     });
-  }
+  }*/
 
   componentDidMount(){
     const imdb = require('imdb-api');
-    imdb.get('Frozen', {apiKey: '2ab7eeb0', timeout: 30000})
-    .then((result)=>{
+    /*
+    let genre = '';
+    if(this.props.weather === 'Clear'){
+      genre = 'Comedy';
+    } else {
+      genre = 'Drama'
+    }
+    */
+    if(true){
+      imdb.search({title: 'Clear'}, {apiKey: '2ab7eeb0', timeout: 30000})
+      .then((result)=>{
+        console.log(result.results);
+        imdb.get(result.results[this.getRandomInt(result.results.length)].title, {apiKey: '2ab7eeb0', timeout: 30000})
+        .then((result)=>{
+          this.props.setMovie(result);
+          console.log(this.props.movie);
+        })
+      })
+      .catch(console.log);
+    } else {
+      imdb.get('Frozen', {apiKey: '2ab7eeb0', timeout: 30000})
+      .then((result)=>{
+        this.props.setMovie(result);
+        console.log(this.props.movie);
+      })
+    }
+  }
 
-      this.setState({movieTitle : result.title});
-      this.setState({moviePoster : result.poster});
-      this.setState({movieRating : result.rating});
-      this.setState({movieGenre : result.genres});
-      this.setState({movieActors : result.actors});
-      this.setState({movieDirector : result.director});
-      this.setState({movieDescription : result.plot});
-      console.log(this.state.movieTitle);
-    })
+  getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
   }
 
   render(){
@@ -51,19 +70,22 @@ export default class getMovie extends Component{
       <div className="movieContainer">
         <div className="movieTitle">
 
-          {this.state.movieTitle}
+          {this.props.movie.title}
         </div>
         <div className="moviePoster">
-          <img className= "poster" src={this.state.moviePoster}/>
+          <img className= "poster" src={this.props.movie.poster}/>
         </div>
         <div className="movieInformation">
-          <p>Rated: {this.state.movieRating}</p>
-          <p>Genre: {this.state.movieGenre}</p>
-          <p>Actors: {this.state.movieActors}</p>
-          <p>Director: {this.state.movieDirector}</p>
-          <p>Description: {this.state.movieDescription}</p>
+          <p>Rated: {this.props.movie.rating}</p>
+          <p>Genre: {this.props.movie.genres}</p>
+          <p>Actors: {this.props.movie.actors}</p>
+          <p>Director: {this.props.movie.director}</p>
+          <p>Description: {this.props.movie.plot}</p>
         </div>
       </div>
     );
   }
 }
+
+const connectedMovie = connect(mapStateToProps, mapDispatchToProps)(Movie);
+export default connectedMovie;

@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import './index.css';
 import Weather from './components/weatherClient';
 import Movie from './components/MovieClient';
+import {connect} from 'react-redux';
+
+const mapStateToProps = state => {
+  return {
+    movie: state.movie,
+  };
+}
 
 class App extends Component {
   render() {
@@ -14,4 +21,6 @@ class App extends Component {
   }
 }
 
-export default App;
+
+const connectedApp = connect(mapStateToProps, null)(App);
+export default connectedApp;

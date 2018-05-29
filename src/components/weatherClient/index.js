@@ -41,7 +41,6 @@ class Weather extends Component {
       console.log(response);
       this.props.setWeather(response.weather[0].main);
       console.log(this.props.weather);
-      //this.setState({weatherInfo: response.weather[0].main});
     });
   }
 
