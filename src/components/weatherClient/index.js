@@ -71,11 +71,15 @@ class Weather extends Component {
     }
 
     return (
-      <span className="weather-container" onClick={this.eventHandler} style={iconStyle}>
+      <div className="weather-container" onClick={this.eventHandler} style={iconStyle}>
 
         <div class="backgroundWeather"><p className="weatherType">{this.props.weather} </p></div>
         <p>at {this.state.latitude}:{this.state.longitude}</p>
-      </span>
+        <div class="siteDescription">
+          <p><b> Moodie</b> is a place for you to help you decide what movie you should watch, depending on the weather!</p>
+          <p> Just press the button to the left and let the magic happen</p>
+        </div>
+      </div>
     );
   }
 }

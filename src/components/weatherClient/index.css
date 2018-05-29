@@ -18,3 +18,13 @@
   background-color: white;
   margin: auto;
 }
+
+.siteDescription{
+  position: absolute;
+  bottom: 0;
+  background-color: white;
+}
+
+.siteDescription p{
+  margin: 5% 10%;
+}
