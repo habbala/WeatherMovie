@@ -1,8 +1,9 @@
-import {SET_WEATHER, SET_MOVIE} from '../constants/action-types.js';
+import {SET_WEATHER, SET_MOVIE, SET_LOCATION} from '../constants/action-types.js';
 
 const initialState = {
-  weather: '',
+  weather: 'Rain',
   movie: '',
+  location: '',
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -13,6 +14,9 @@ const rootReducer = (state = initialState, action) => {
 
     case SET_MOVIE:
       return {...state, movie: action.movie };
+
+    case SET_LOCATION:
+      return {...state, location: action.location };
 
     default:
       return state;

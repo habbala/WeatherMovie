@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './index.css';
 import {connect} from 'react-redux';
 import {setWeather} from '../../actions';
+import {geolocated} from 'react-geolocated';
 
 const weather = require('openweather-apis');
 
@@ -29,18 +30,31 @@ class Weather extends Component {
   componentWillMount(){
     weather.setAPPID('5a8b6837143c58aa94dee4d3be632930');
     weather.setLang('en');
-    weather.setCity('Stockholm');
+    //weather.setCity('Stockholm');
+    weather.setCoordinate(51.5033640, -0.1276250);
   }
 
   componentDidMount(){
     this.getWeather();
   }
 
+  getLocation(){
+    if(!this.props.isGeolocationAvailable){
+      console.log("browser does not support geolocation");
+    } else {
+      if(!this.props.isGeolocationEnabled){
+        console.log("geolocation is not enabled");
+      } else {
+        console.log(this.props.coords);
+        weather.setCoordinate(this.props.coords.latitude, this.props.coords.longitude);
+      }
+    }
+  }
+
   getWeather(){
+    this.getLocation();
     weather.getAllWeather((err, response) => {
-      console.log(response);
       this.props.setWeather(response.weather[0].main);
-      console.log(this.props.weather);
     });
   }
 
@@ -51,7 +65,7 @@ class Weather extends Component {
   render() {
     return (
       <div className="weather-container" onClick={this.eventHandler}>
-        {this.props.weather}
+        {this.props.weather} at {this.props.coords}
       </div>
     );
   }

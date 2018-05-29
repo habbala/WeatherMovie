@@ -1,4 +1,3 @@
-//IMDB-API key: 2ab7eeb0
 import React, { Component } from 'react';
 import './index.css';
 import {setMovie} from '../../actions';
@@ -17,59 +16,53 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const imdb = require('imdb-api');
+const apiKey = '2ab7eeb0';
+
 class Movie extends Component{
 
-/*
-  componentWillMount(){
-    const imdb = require('imdb-api');
-    imdb.get('Frozen', {apiKey: '2ab7eeb0', timeout: 30000})
-    .then(function(response){
-      console.log(response);
-    })
-    .catch(function(error){
-      console.log(error);
-    });
-  }*/
-
+  constructor(props){
+    super(props);
+    this.eventHandler = this.eventHandler.bind(this);
+  }
   componentDidMount(){
-    const imdb = require('imdb-api');
-    /*
-    let genre = '';
-    if(this.props.weather === 'Clear'){
-      genre = 'Comedy';
+    if(this.props.weather !== null || this.props.weather !== ''){
+      this.getRandomWeatherMovie();
     } else {
-      genre = 'Drama'
+      this.getMovie('Trouble');
     }
-    */
-    if(true){
-      imdb.search({title: 'Clear'}, {apiKey: '2ab7eeb0', timeout: 30000})
-      .then((result)=>{
-        console.log(result.results);
-        imdb.get(result.results[this.getRandomInt(result.results.length)].title, {apiKey: '2ab7eeb0', timeout: 30000})
-        .then((result)=>{
-          this.props.setMovie(result);
-          console.log(this.props.movie);
-        })
-      })
-      .catch(console.log);
-    } else {
-      imdb.get('Frozen', {apiKey: '2ab7eeb0', timeout: 30000})
-      .then((result)=>{
-        this.props.setMovie(result);
-        console.log(this.props.movie);
-      })
-    }
+  }
+
+  getRandomWeatherMovie(){
+    imdb.search({title: this.props.weather}, {apiKey: apiKey, timeout: 30000})
+    .then((result)=>{
+      console.log(result.results);
+      this.getMovie(result.results[this.getRandomInt(result.results.length)].title);
+    })
+    .catch(console.log);
+  }
+
+  getMovie(title){
+    imdb.get(title, {apiKey: apiKey, timeout: 30000})
+    .then((result)=>{
+      this.props.setMovie(result);
+      console.log(this.props.movie);
+    })
   }
 
   getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
+  eventHandler(event){
+    this.getRandomWeatherMovie();
+    console.log("CLICK");
+  }
+
   render(){
     return (
-      <div className="movieContainer">
+      <div className="movieContainer" onClick={this.eventHandler}>
         <div className="movieTitle">
-
           {this.props.movie.title}
         </div>
         <div className="moviePoster">
