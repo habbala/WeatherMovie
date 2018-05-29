@@ -66,7 +66,7 @@ class Movie extends Component{
 
   render(){
     return (
-      <span className="movieContainer" onClick={this.eventHandler}>
+      <span className="movieContainer" >
         <div className="movieTitle">
           {this.props.movie.title}
         </div>
@@ -79,6 +79,9 @@ class Movie extends Component{
           <p><b>Actors:</b> {this.props.movie.actors}</p>
           <p><b>Director: </b>{this.props.movie.director}</p>
           <p ID="movieDesc"><b>Description: </b>{this.props.movie.plot}</p>
+          <div onClick={this.eventHandler} class="randomizeButton">
+            <p>Another Moovie, please</p>
+          </div>
         </div>
       </span>
     );

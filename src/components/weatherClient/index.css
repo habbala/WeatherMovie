@@ -12,3 +12,9 @@
   font-size: 50px;
   text-align: center;
 }
+
+.backgroundWeather{
+  width: 100%;
+  background-color: white;
+  margin: auto;
+}
