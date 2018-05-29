@@ -13,7 +13,12 @@ const mapStateToProps = state => {
 class App extends Component {
   render() {
     return (
+
       <div>
+        <div class="header">
+          <h1>Moodie </h1>
+        </div>
+
         <Weather/>
         <Movie/>
       </div>
