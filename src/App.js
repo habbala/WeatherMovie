@@ -14,13 +14,14 @@ class App extends Component {
   render() {
     return (
 
-      <div>
+      <div class="container1">
         <div class="header">
           <h1>Moodie </h1>
         </div>
-
-        <Weather/>
-        <Movie/>
+        <div class="container2">
+          <Weather/>
+          <Movie/>
+        </div>
       </div>
     );
   }

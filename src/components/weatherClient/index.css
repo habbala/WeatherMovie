@@ -1,8 +1,8 @@
 .weather-container{
-  width: 500px;
-  height: 100px;
-  background-color: #eee;
-  border: 1px solid black;
+  width: 30%;
+  height: 100%;
+  background-color: rgba(192,250,202,1);
+  float: right;
 }
 
 .weather-container :hover{

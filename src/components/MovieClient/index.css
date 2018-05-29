@@ -2,9 +2,10 @@
   display: grid;
   grid-template-columns: 40% 60%;
   grid-template-rows: 85% 15%;
-  background-color: pink;
-  height: auto;
+  background-color: rgba(244,235,160,1);
+  height: 100%;
   width: 70%;
+  float: left;
 }
 
 .movieTitle{
