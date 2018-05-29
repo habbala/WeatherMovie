@@ -25,7 +25,7 @@ class Movie extends Component{
     super(props);
     this.eventHandler = this.eventHandler.bind(this);
   }
-  componentDidMount(){
+  componentWillMount(){
     if(this.props.weather !== null || this.props.weather !== ''){
       this.getRandomWeatherMovie();
     } else {
