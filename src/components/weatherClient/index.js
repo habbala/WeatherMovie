@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './index.css';
 import {connect} from 'react-redux';
 import {setWeather} from '../../actions';
-import {geolocated} from 'react-geolocated';
 
 const weather = require('openweather-apis');
 
@@ -25,6 +24,7 @@ class Weather extends Component {
     this.state = {
       latitude: '63.826489',
       longitude: '20.324358',
+      icon: '',
     }
     this.getWeather = this.getWeather.bind(this);
     this.setLocation = this.setLocation.bind(this);
@@ -55,6 +55,8 @@ class Weather extends Component {
   getWeather(){
     weather.getAllWeather((err, response) => {
       this.props.setWeather(response.weather[0].main);
+      this.setState({icon: response.weather[0].icon});
+      console.log(this.state.icon);
     });
   }
 
@@ -66,6 +68,7 @@ class Weather extends Component {
   render() {
     return (
       <span className="weather-container" onClick={this.eventHandler}>
+        <img className = "icon"/>
         {this.props.weather} at {this.state.latitude}:{this.state.longitude}
       </span>
     );

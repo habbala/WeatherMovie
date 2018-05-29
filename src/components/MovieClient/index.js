@@ -26,10 +26,10 @@ class Movie extends Component{
     this.eventHandler = this.eventHandler.bind(this);
   }
   componentWillMount(){
-    if(this.props.weather !== null || this.props.weather !== ''){
+    if(this.props.weather !== -1){
       this.getRandomWeatherMovie();
     } else {
-      this.getMovie('Trouble');
+      this.getMovie('Mood');
     }
   }
 

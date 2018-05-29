@@ -1,7 +1,7 @@
 import {SET_WEATHER, SET_MOVIE, SET_LOCATION} from '../constants/action-types.js';
 
 const initialState = {
-  weather: '',
+  weather: -1,
   movie: '',
   location: '',
 };
