@@ -22,8 +22,8 @@ class Weather extends Component {
   constructor(props){
     super(props);
     this.state = {
-      latitude: '63.826489',
-      longitude: '20.324358',
+      latitude: '40.741895',
+      longitude: '-73.989308',
       icon: '',
     }
     this.getWeather = this.getWeather.bind(this);
@@ -34,7 +34,7 @@ class Weather extends Component {
   componentWillMount(){
     weather.setAPPID('5a8b6837143c58aa94dee4d3be632930');
     weather.setLang('en');
-    this.getLocation();
+    weather.setCoordinate(this.state.latitude, this.state.longitude);
   }
 
   componentDidMount(){
@@ -50,6 +50,7 @@ class Weather extends Component {
     this.setState({longitude: position.coords.longitude});
     weather.setCoordinate(this.state.latitude, this.state.longitude);
     console.log(this.state.latitude + " : " + this.state.longitude);
+    this.getWeather();
   }
 
   getWeather(){
@@ -62,7 +63,6 @@ class Weather extends Component {
 
   eventHandler(event){
     this.getLocation();
-    this.getWeather();
   }
 
   render() {

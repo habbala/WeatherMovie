@@ -3,7 +3,7 @@ import {SET_WEATHER, SET_MOVIE, SET_LOCATION} from '../constants/action-types.js
 const initialState = {
   weather: -1,
   movie: '',
-  location: '',
+  location: '0,0',
 };
 
 const rootReducer = (state = initialState, action) => {
